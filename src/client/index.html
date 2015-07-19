@@ -1,0 +1,132 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Chat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link href="css/jquery-mobile.css" rel="stylesheet" />
+        <link href="css/jquery-mobile-ios.css" rel="stylesheet" />
+        <link href="css/index.css" rel="stylesheet" />
+		<script src="/socket.io/socket.io.js"></script>
+        <script src="js/jquery/jquery.js"></script>
+		<script>
+			// attention: Include AFTER jQuery but BEFORE jQuery mobile!
+			
+	        // all dialog buttons should close their parent dialog
+	        $(".ui-dialog button").on("click", function () {
+	            $("[data-role='dialog']").dialog("close");
+	        });
+	        $(document).on("mobileinit", function () {
+	            $.mobile.defaultPageTransition = "slide";
+	        });
+		</script>
+        <script type="text/javascript" src="js/variables.js"></script>
+        <script type="text/javascript" src="js/helper.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="js/jquery/jquery.mobile.js"></script>
+    </head>
+    <body>
+        <noscript>
+            <center>
+                <div class="noJSAlert-outer">
+                    <div class="noJSAlert-inner-up">
+                        &nbsp;JavaScript is disabled
+                    </div>
+                    <div class="noJSAlert-inner-down">
+                        JavaScript is turned off in your web browser, so this site won't work properly! <br />
+                        <strong>
+                        Please turn JavaScript on to use this site, then refresh the page.
+                        </strong>
+                    </div>
+                </div>
+            </center>
+        </noscript>
+        <div data-role="page">
+            <div data-role="header" data-position="fixed">
+                <h1>Chat</h1>
+            </div>
+            <!-- /header --> 
+            <div data-role="content">
+                <ul data-role="listview" data-inset="true">
+                    <li><a href="#chat">Chat</a></li>
+                    <li><a href="#changename">Change name</a></li>
+                    <li><a href="#userlist">User list <span id="userlistCount" class="ui-li-count"></span></a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <!-- /ui-body wrapper -->	
+        </div>
+        <!-- /page --> 
+        <div data-role="page" id="chat">
+            <div data-role="header" data-position="fixed">
+                <h1>Chat</h1>
+                <a href="#" data-rel="back" data-theme="a">Back</a>
+            </div>
+            <!-- /header -->
+            <div data-role="content">
+                <center>
+                    <div id="loading"><img src="img/loading.gif" /><br />Loading...</div>
+                </center>
+                <div id="messagesAndSend">
+                    <div id="messages"></div>
+                    <div id="send" class="clear">
+                        <input type="text" name="text-basic" id="newMessage" value="" placeholder="Your message">
+                        <a data-role="button" class="ui-btn-plain" id="buttonSendMessage">Send</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" id="changename">
+            <div data-role="header" data-position="fixed">
+                <h1>Change name</h1>
+                <a href="#" data-rel="back" data-theme="a">Back</a>
+            </div>
+            <!-- /header -->
+            <div data-role="content">
+                <div id="currentName"></div>
+				<br />
+                <input type="text" name="text-basic" id="newName" value="" placeholder="Your new name">
+                <a data-role="button" class="ui-btn-plain" id="buttonSendName">Send</a>
+                <center>
+                    <div id="popupName" data-transition="fade">
+                        <img src="img/jquery-mobile/tick.png">
+                        <p>Saved
+                        <p>
+                    </div>
+                </center>
+            </div>
+        </div>
+        <div data-role="page" id="userlist">
+            <div data-role="header" data-position="fixed">
+                <h1>User list</h1>
+                <a href="#" data-rel="back" data-theme="a">Back</a>
+            </div>
+            <!-- /header -->
+            <div data-role="content">
+                <ul data-role="listview" id="userlistview">
+                    <!-- <li data-role="list-divider">Divider</li> -->
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" id="about">
+            <div data-role="header" data-position="fixed">
+                <h1>About</h1>
+                <a href="#" data-rel="back" data-theme="a">Back</a>
+            </div>
+            <!-- /header -->
+            <div data-role="content"> 
+                <h3>Chat</h3>
+				<u>Version</u><br />
+				1.0.1
+				<br /><br />
+                <u>Author</u><br />
+				Denis Meyer
+				<br /><br />
+                <a href="https://sites.google.com/site/calltopowersoftware" target="_blank">CallToPower Software</a>
+				<br /><br />
+				All rights reserved.
+            </div>
+        </div>
+    </body>
+</html>
